@@ -1,15 +1,38 @@
 // ES. di oggi:
 // i 2 EX in descrizione
 // DESCRIZIONE:
-// 1 Chiedi all’utente la sua email controlla che sia nella lista di chi può accedere e stampa un messaggio appropriato;
 // 2 Gioco dei dadi, chi fa di più vince.
-// BONUS: (ma solo se il resto è fatto)
-// abbellire i vari output con CSS (e questo se volete fate anche direttamente in cartelle degli EX principali);
-// casi limite e controlli vari che vi vengono in mente (in questo caso invece creiamo copia degli ex in sottocartelle nel repo)
-// nome repo: js-mail-dadi
-// NOTE:
-// il mio repo avrà almeno 2 sottocartelle per i 2 EX principali (richieste base + eventuali migliorie CSS);
-// se faccio anche bonus 2 ci sarannò anche sottocartelle dei bonus;
-// come detto il primo NON uso metodi non visti fin’ora tipo “include”, ma cerco di risolvermela come ragionata insieme in aula, con quello che già sò.
-// Buon divertimento,
-// e ricordate sempre di fare ogni tanto dei commit e dei push! :pushpin::man-tipping-hand:
+
+
+
+function giocoDadi(){
+  var tiroDadiG1 = prompt("premi invio per tirare i dadi");
+
+  tiroDadiG1 = Math.floor((Math.random() * 6) + 1) + Math.floor((Math.random() * 6) + 1);
+
+  var tiroDadiG2 = prompt("il tuo risultato è " + tiroDadiG1 + ". Turno del pc. Premi invio.");
+
+  tiroDadiG2 = Math.floor((Math.random() * 6) + 1) + Math.floor((Math.random() * 6) + 1);
+
+  var vincitore;
+
+  if (tiroDadiG1 > tiroDadiG2) {
+    vincitore = ("il risultato del pc è "+ tiroDadiG2 + ". Hai vinto!");
+  }else if (tiroDadiG1 < tiroDadiG2) {
+    vincitore = ("il risultato del pc è "+ tiroDadiG2 + ". Hai perso!");
+  }else {
+    vincitore = ("il risultato del pc è "+ tiroDadiG2 + ". Parità!");
+  }
+
+  var restartGame = parseInt(prompt(vincitore + " Premi 1 per giocare ancora, 2 per interrompere il gioco"));
+
+  if (restartGame == 1) {
+    return giocoDadi();
+  }else if (restartGame == 2) {
+    prompt("grazie per aver giocato")
+  }else {
+    prompt("ma quanto siamo furbi eh?")
+  }
+}
+
+giocoDadi()
